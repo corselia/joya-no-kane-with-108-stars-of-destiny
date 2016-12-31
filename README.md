@@ -30,5 +30,8 @@ from December 31th (22:12) to January 1st (00:01), every minute you can tweet 10
 */1 * * * * root  /usr/bin/ruby /opt/joya_no_kane_with_108_stars.rb
 ```
 
+### initialize
+delete `hitting_status` to initialize 
+
 # License
 The MIT License
