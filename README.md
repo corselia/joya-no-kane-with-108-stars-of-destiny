@@ -20,7 +20,8 @@ from December 31th (22:12) to January 1st (00:01), every minute you can tweet 10
 - translate `108_stars_name.csv` into your language
     - default language is Japanese
 - column order is below
-    - Suikoden, Suikoden II, Suikoden III, Suikoden IV, Suikoden V, Suikoden Tierkreis, Suikoden Tsumugareshi
+    - Stars,Suikoden, Suikoden II, Suikoden III, Suikoden IV, Suikoden V, Suikoden Tierkreis, Suikoden Tsumugareshi
+    - header row is nothing
 
 ### set cron
 - set cron as below
