@@ -16,12 +16,17 @@ from December 31th (22:12) to January 1st (00:01), every minute you can tweet 10
 - rewrite sample config to your Twitter app config in `twitter_api_config.rb.sample`
 - rename `twitter_api_config.rb.sample` to `twitter_api_config.rb`
 
-### 108 stars of destiny
+### 108 stars of destiny file (csv)
 - translate `108_stars_name.csv` into your language
     - default language is Japanese
 - column order is below
     - Stars,Suikoden, Suikoden II, Suikoden III, Suikoden IV, Suikoden V, Suikoden Tierkreis, Suikoden Tsumugareshi
     - header row is nothing
+
+### tweet content
+- translate `tweet_content` into your language and modify its content
+    - default language is Japanese
+    - default content is very ordinary one
 
 ### set cron
 - set cron as below
@@ -34,4 +39,4 @@ from December 31th (22:12) to January 1st (00:01), every minute you can tweet 10
 delete `hitting_status` to initialize 
 
 # License
-The MIT License
+MIT License
