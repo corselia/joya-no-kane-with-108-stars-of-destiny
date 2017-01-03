@@ -8,6 +8,10 @@ BEGIN_DAYTIME  = "2016-12-31 22:11:59"
 FINISH_DAYTIME = "2017-01-01 00:01:59"
 TO_HIT_TIMES = 108
 
+OPENING_TWEET = "ただいまより108星除夜の鐘を撞き始めたいと存じます / キャラの登場作品順は、「幻水I / 幻水II / 幻水III / 幻水IV / 幻水V/ 幻水TK / 幻水紡時」という順となります"
+FINISH_TWEET = "108星の願いとともに！ / 2017年もよろしくお願いいたします"
+TWEET_CONTENT = "108星除夜の鐘（#{@hitting_times + 1} 回目）: [#{@csv_data[107 - @hitting_times][0]}] : #{@csv_data[107 - @hitting_times][1]} / #{@csv_data[107 - @hitting_times][2]} / #{@csv_data[107 - @hitting_times][3]} / #{@csv_data[107 - @hitting_times][4]} / #{@csv_data[107 - @hitting_times][5]} / #{@csv_data[107 - @hitting_times][6]} / #{@csv_data[107 - @hitting_times][7]}"
+
 # 最初から撞き直したい場合は hitting_times を削除する
 def existence_check_hitting_status_file
   if !File.exist?(HITTING_STATUS_FILENAME)
@@ -61,12 +65,11 @@ def main
   stars_name_import
   twitter_api_config
   if @hitting_times == 0 and @opening_tweet_done == 0
-    tweet_content = "ただいまより108星除夜の鐘を撞き始めたいと存じます / キャラの登場作品順は、「幻水I / 幻水II / 幻水III / 幻水IV / 幻水V/ 幻水TK / 幻水紡時」という順となります"
+    tweet_content = OPENING_TWEET
   elsif @hitting_times == TO_HIT_TIMES
-    tweet_content = "108星の願いとともに！ / 2017年もよろしくお願いいたします"
+    tweet_content = FINISH_TWEET
   else
-    # 幻水I,幻水II,幻水III,幻水IV,幻水V,TK,紡時
-    tweet_content = "108星除夜の鐘（#{@hitting_times + 1} 回目）: [#{@csv_data[107 - @hitting_times][0]}] : #{@csv_data[107 - @hitting_times][1]} / #{@csv_data[107 - @hitting_times][2]} / #{@csv_data[107 - @hitting_times][3]} / #{@csv_data[107 - @hitting_times][4]} / #{@csv_data[107 - @hitting_times][5]} / #{@csv_data[107 - @hitting_times][6]} / #{@csv_data[107 - @hitting_times][7]}"
+    tweet_content = TWEET_CONTENT
   end
 
   @client.update(tweet_content)
