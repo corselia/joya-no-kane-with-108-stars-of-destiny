@@ -7,7 +7,7 @@ from December 31th (22:12) to January 1st (00:01), every minute you can tweet 10
 # Required
 
 ```
-# gem install twitter
+$ sudo gem install twitter
 ```
 
 # How to use
