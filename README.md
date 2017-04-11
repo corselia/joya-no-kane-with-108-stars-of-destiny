@@ -13,30 +13,30 @@ from December 31th (22:12) to January 1st (00:01), every minute you can tweet 10
 # How to use
 
 ### config file
-- rewrite sample config to your Twitter app config in `twitter_api_config.rb.sample`
-- rename `twitter_api_config.rb.sample` to `twitter_api_config.rb`
+- rewrite sample config to your Twitter app config in `TwitterApiConfig.rb.sample`
+- rename `TwitterApiConfig.rb.sample` to `TwitterApiConfig.rb`
 
 ### 108 stars of destiny file (csv)
 - translate `108_stars_name.csv` into your language
     - default language is Japanese
 - column order is below
-    - Stars,Suikoden, Suikoden II, Suikoden III, Suikoden IV, Suikoden V, Suikoden Tierkreis, Suikoden Tsumugareshi
+    - Stars,Suikoden,Suikoden II,Suikoden III,Suikoden IV,Suikoden V,Suikoden Tierkreis(Suikoden Tactics),Suikoden Tsumugareshi
     - header row is nothing
 
 ### tweet content
-- translate `tweet_content` into your language and modify its content
+- translate `tweet_content` into your language and modify it
     - default language is Japanese
-    - default content is very ordinary one
+    - default content is my original, very ordinary one
 
 ### set cron
 - set cron as below
 
 ```
-*/1 * * * * root  /usr/bin/ruby /opt/joya_no_kane_with_108_stars.rb
+*/1 * * * * username  /usr/bin/ruby /apps/JoyaNoKaneWith108Stars.rb
 ```
 
 ### initialize
 delete `hitting_status` to initialize 
 
 # License
-MIT License
+[MIT License](/LICENSE)
