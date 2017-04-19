@@ -2,6 +2,7 @@ require 'twitter'
 require 'csv'
 require './TwitterApiConfig'
 
+# HACK: メソッドの private 指定
 class JoyaNoKaneWith108Stars
   include TwitterApiConfig
 
@@ -9,10 +10,10 @@ class JoyaNoKaneWith108Stars
   STARS_NAME_CSV_FILENAME = File.expand_path('../108_stars_name.csv', __FILE__)
   BEGIN_DATETIME  = "2016-12-31 22:11:59"
   FINISH_DATETIME = "2017-01-01 00:01:59"
-  TO_HIT_TIMES = 108
+  TO_HIT_TIMES    = 108
 
   OPENING_TWEET = "ただいまより108星除夜の鐘を撞き始めたいと存じます / キャラの登場作品順は、「幻水I / 幻水II / 幻水III / 幻水IV / 幻水V/ 幻水TK / 幻水紡時」という順となります"
-  FINISH_TWEET = "108星の願いとともに！ / 2017年もよろしくお願いいたします"
+  FINISH_TWEET  = "108星の願いとともに！ / 2017年もよろしくお願いいたします"
 
   # CSV の最終行からツイートを開始し、一行ずつ上の行に進んでいく
   # HACK: スマートに書く（マジックナンバーの撤廃）
@@ -23,7 +24,7 @@ class JoyaNoKaneWith108Stars
     File.open(HITTING_STATUS_FILENAME, "w") do |file|
       file.puts "0" # 撞いた回数
     end unless File.exist?(HITTING_STATUS_FILENAME)
-    @hitting_times      = 0
+    @hitting_times = 0
   end
 
   def update_hitting_status
