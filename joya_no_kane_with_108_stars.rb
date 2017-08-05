@@ -1,8 +1,7 @@
 require 'twitter'
 require 'csv'
-require './TwitterApiConfig'
+require './twitter_api_config.rb'
 
-# HACK: メソッドの private 指定
 class JoyaNoKaneWith108Stars
   include TwitterApiConfig
 
@@ -16,9 +15,29 @@ class JoyaNoKaneWith108Stars
   FINISH_TWEET  = "108星の願いとともに！ / 2017年もよろしくお願いいたします"
 
   # CSV の最終行からツイートを開始し、一行ずつ上の行に進んでいく
-  # HACK: スマートに書く（マジックナンバーの撤廃）
+  # HACK: マジックナンバーの撤廃
   TWEET_CONTENT = "108星除夜の鐘（#{@hitting_times + 1} 回目）: [#{@stars_name_array[107 - @hitting_times][0]}] : #{@stars_name_array[107 - @hitting_times][1]} / #{@stars_name_array[107 - @hitting_times][2]} / #{@stars_name_array[107 - @hitting_times][3]} / #{@stars_name_array[107 - @hitting_times][4]} / #{@stars_name_array[107 - @hitting_times][5]} / #{@stars_name_array[107 - @hitting_times][6]} / #{@stars_name_array[107 - @hitting_times][7]}"
 
+  def main
+    create_hitting_status_file
+
+    judge_to_hit
+    import_stars_name
+    twitter_api_config
+
+    if @hitting_times == 0
+      tweet_content = OPENING_TWEET
+    elsif @hitting_times == (TO_HIT_TIMES - 1)
+      tweet_content = FINISH_TWEET
+    else
+      tweet_content = TWEET_CONTENT
+    end
+
+    @client.update(tweet_content)
+    update_hitting_status
+  end
+
+  private
   # 最初から撞き直したい場合は hitting_status ファイルを削除する
   def create_hitting_status_file
     File.open(HITTING_STATUS_FILENAME, "w") do |file|
@@ -44,25 +63,6 @@ class JoyaNoKaneWith108Stars
 
   def import_stars_name
     @stars_name_array = CSV.read(STARS_NAME_CSV_FILENAME, headers: false)
-  end
-
-  def main
-    create_hitting_status_file
-
-    judge_to_hit
-    import_stars_name
-    twitter_api_config
-
-    if @hitting_times == 0
-      tweet_content = OPENING_TWEET
-    elsif @hitting_times == (TO_HIT_TIMES - 1)
-      tweet_content = FINISH_TWEET
-    else
-      tweet_content = TWEET_CONTENT
-    end
-
-    @client.update(tweet_content)
-    update_hitting_status
   end
 end
 

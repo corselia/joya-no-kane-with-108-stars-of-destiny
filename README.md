@@ -13,8 +13,8 @@ $ sudo gem install twitter
 # How to use
 
 ### config file
-- rewrite sample config to your Twitter app config in `TwitterApiConfig.rb.sample`
-- rename `TwitterApiConfig.rb.sample` to `TwitterApiConfig.rb`
+- rewrite sample config to your Twitter app config in `twitter_api_config.rb.sample`
+- rename `twitter_api_config.rb.sample` to `twitter_api_config.rb`
 
 ### 108 stars of destiny file (csv)
 - translate `108_stars_name.csv` into your language
@@ -32,11 +32,11 @@ $ sudo gem install twitter
 - set cron as below
 
 ```
-*/1 * * * * username  /usr/bin/ruby /apps/JoyaNoKaneWith108Stars.rb
+*/1 * * * * username  /usr/bin/ruby /path/joya_no_kane_with_108_stars.rb
 ```
 
 ### initialize
-delete `hitting_status` to initialize 
+delete `hitting_status` to initialize
 
 # License
 [MIT License](/LICENSE)
