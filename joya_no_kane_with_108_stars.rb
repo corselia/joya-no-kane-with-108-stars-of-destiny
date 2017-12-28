@@ -19,7 +19,7 @@ class JoyaNoKaneWith108Stars
   TWEET_CONTENT = "108星除夜の鐘（#{@hitting_times + 1} 回目）: [#{@stars_name_array[107 - @hitting_times][0]}] : #{@stars_name_array[107 - @hitting_times][1]} / #{@stars_name_array[107 - @hitting_times][2]} / #{@stars_name_array[107 - @hitting_times][3]} / #{@stars_name_array[107 - @hitting_times][4]} / #{@stars_name_array[107 - @hitting_times][5]} / #{@stars_name_array[107 - @hitting_times][6]} / #{@stars_name_array[107 - @hitting_times][7]}"
 
   def main
-    create_hitting_status_file
+    create_hitting_status_file unless File.exist?(HITTING_STATUS_FILENAME)
 
     judge_to_hit
     import_stars_name
@@ -37,12 +37,11 @@ class JoyaNoKaneWith108Stars
     update_hitting_status
   end
 
-  private
   # 最初から撞き直したい場合は hitting_status ファイルを削除する
   def create_hitting_status_file
     File.open(HITTING_STATUS_FILENAME, "w") do |file|
       file.puts "0" # 撞いた回数
-    end unless File.exist?(HITTING_STATUS_FILENAME)
+    end
     @hitting_times = 0
   end
 
@@ -57,7 +56,7 @@ class JoyaNoKaneWith108Stars
     begin_datetime  = Time.parse(BEGIN_DATETIME)
     finish_datetime = Time.parse(FINISH_DATETIME)
     now_datetime    = Time.now
-    exit(0) if (begin_datetime - now_datetime <= 0) && (now_datetime - finish_datetime >= 0)
+    exit(0) if (begin_datetime - now_datetime <= 0) && (now_datetime - finish_datetime >= 0) # HACK: ここは初期化処理のような部分でやるべき
     exit(0) if @hitting_times > TO_HIT_TIMES
   end
 
