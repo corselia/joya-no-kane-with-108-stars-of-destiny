@@ -38,5 +38,8 @@ $ gem install twitter
 ### initialize
 delete `hitting_status` to initialize
 
+# Screenshot
+![joya-no-kane-with-108-stars-of-destiny_ss](joya-no-kane-with-108-stars-of-destiny_ss.png)
+
 # License
 [MIT License](/LICENSE)
